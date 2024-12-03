@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc mừng kỷ niệm 1 năm yêu nhau</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f8ff;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        .message {
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #ff69b4;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+        .message h1 {
+            color: #ff69b4;
+            font-size: 3em;
+            text-shadow: 2px 2px #ff1493;
+        }
+        .message p {
+            color: #333;
+            font-size: 1.2em;
+        }
+        .highlight {
+            color: #ff69b4;
+            font-weight: bold;
+            font-size: 1.5em;
+            text-shadow: 1px 1px #ff1493;
+        }
+        .message img {
+            margin-top: 20px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .emotion-space {
+            margin-top: 20px;
+            text-align: left;
+            padding: 20px;
+            border: 2px dashed #ff69b4;
+            border-radius: 10px;
+            background-color: #fef6f6;
+            display: none;
+        }
+        .reward {
+            margin-top: 20px;
+            padding: 20px;
+            border: 2px solid #ffd700;
+            border-radius: 10px;
+            background-color: #fffacd;
+            display: none;
+        }
+        .game {
+            margin-top: 20px;
+        }
+        .game button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #ff69b4;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .game button:hover {
+            background-color: #ff1493;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 1;
+            }
+        }
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff69b4;
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0 38%);
+            animation: fall 10s infinite;
+        }
+        .heart:nth-child(2) {
+            left: 20%;
+            animation-duration: 12s;
+        }
+        .heart:nth-child(3) {
+            left: 40%;
+            animation-duration: 14s;
+        }
+        .heart:nth-child(4) {
+            left: 60%;
+            animation-duration: 16s;
+        }
+        .heart:nth-child(5) {
+            left: 80%;
+            animation-duration: 18s;
+        }
+    </style>
+</head>
+<body>
+    <div class="message">
+        <h1>Chúc mừng kỷ niệm 1 năm yêu nhau!</h1>
+        <p class="highlight">Chúc Hiếu Nhi một ngày tràn đầy tình yêu và niềm vui.</p>
+        <p class="highlight">Ngày: 03/12/2024</p>
+        <img id="anniversaryImage" src="https://example.com/image1.jpg" alt="Happy Anniversary Image">
+        <div class="game">
+            <p id="question"></p>
+            <input type="text" id="answer" placeholder="Nhập câu trả lời của bạn">
+            <button onclick="checkAnswer()">Trả lời</button>
+            <p id="gameResult"></p>
+        </div>
+        <div class="reward" id="reward">
+            <h2>Phần Thưởng Đặc Biệt</h2>
+            <p>Chúc mừng! Bé đã hoàn thành tất cả các câu đố và nhận được phần thưởng đặc biệt này!</p>
+            <p>Chính là anh! CHỒNG BÉ !!!! Moahhhhhh!!!!!</p>
+        </div>
+        <div class="emotion-space" id="emotionSpace">
+            <p>Những cảm xúc của anh khi được ở cạnh bé</p>
+            <p>Bé iu ơi. Anh cảm thấy rất hạnh phúc, rất vui, có rất nhiều cảm xúc anh không diễn tả hết được nhưng ở cạnh em anh hạnh phúc lắm</p>
+            <p>Anh muốn được là người cuối cùng của bé !!!!!!</p>
+            <p>Anh yêu em !!!! yêu em nhiều lắm !!!! Mãi yêu em - Vợ Anh - Lê Hiếu Nhi !!!!!!</p>
+        </div>
+    </div>
+    <div class="hearts">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+    </div>
+    <script>
+        const questions = [
+            { question: "Câu đố 1: Địa điểm lần đầu gặp nhau là ở đâu?", answer: "quán bún đậu" },
+            { question: "Câu đố 2: Ai là người tỏ tình?", answer: "anh" },
+            { question: "Câu đố 3: Lần đầu mình đi chơi xa là ở đâu?", answer: "vũng tàu" },
+            { question: "Câu đố 4: Ngày kỷ niệm là ngày nào?", answer: "3/12" },
+            { question: "Câu đố 5: Chuyến đi chơi xa nhất là ở đâu?", answer: "đà lạt" },
+            { question: "Câu đố 6: Liệu em có muốn đi chơi xa với anh nữa không?", answer: "có" },
+            { question: "Câu đố 7: Ai là người mở lời mới đối phương đi chơi?", answer: "anh" },
+            { question: "Câu đố 8: Lần đầu gặp nhau ai là người bị leo cây?", answer: "anh" },
+            { question: "Câu đố 9: Ai là người dụ dỗ đối phương?", answer: "em" },
+            { question: "Câu đố 10: Bé có hạnh phúc khi quen anh không?", answer: "có" }
+        ];
+
+        const images = [
+            "https://example.com/image1.jpg", // Sử dụng URL hợp lệ
+            // ... (các URL hợp lệ khác)
+        ];
+        let currentIndex = 0;
+
+        function checkAnswer() {
+            const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
+            if (userAnswer === questions[currentIndex].answer.toLowerCase()) {
+                document.getElementById('anniversaryImage').src = images[currentIndex];
+                document.getElementById('gameResult').innerText = "QUÀO!";
+                currentIndex++;
+                if (currentIndex < questions.length) {
+                    document.getElementById('question').innerText = questions[currentIndex].question;
+                } else {
+                    document.getElementById('question').innerText = "Bé giỏi thế! Bé đã hoàn thành tất cả các câu đố!";
+                    document.getElementById('answer').style.display = "none";
+                    document.getElementById('gameResult').innerText = "";
+                    document.getElementById('reward').style.display = "block"; // Hiển thị phần thưởng
+                    document.getElementById('emotionSpace').style.display = "block"; // Hiển thị phần cảm xúc
+                }
+            } else {
+                document.getElementById('gameResult').innerText = "Chưa đúng rồi, Cho bé thử lại!";
+            }
+            document.getElementById('answer').value = "";
+        }
+
+        document.getElementById('question').innerText = questions[currentIndex].question;
+    </script>
+</body>
+</html>
